@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV Charger Visual Analysis - Australia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation & Filters -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">⚡</div>
+                <h1>Energy<span class="highlight">Sync</span></h1>
+            </div>
+            <p class="subtitle">EV Charger Analysis Tool - AU</p>
+            
+            <div class="filter-section">
+                <h3>Filters</h3>
+                
+                <div class="filter-group">
+                    <label for="state-filter">State</label>
+                    <select id="state-filter">
+                        <option value="all">All States</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="city-filter">City</label>
+                    <select id="city-filter">
+                        <option value="all">All Cities</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="town-filter">Town</label>
+                    <select id="town-filter">
+                        <option value="all">All Towns</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="status-filter">Status</label>
+                    <select id="status-filter">
+                        <option value="all">All</option>
+                        <option value="operational">Operational</option>
+                        <option value="planned">Coming Soon</option>
+                        <option value="suggested">Predictions</option>
+                    </select>
+                </div>
+
+                <button id="apply-filters" class="primary-btn">Apply Filters</button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-header">
+                <h2>Market Density & Efficiency</h2>
+                <div class="legend">
+                    <div class="legend-item"><span class="dot orange"></span> Operational</div>
+                    <div class="legend-item"><span class="dot yellow"></span> Coming Soon</div>
+                    <div class="legend-item"><span class="dot green"></span> Predictions</div>
+                </div>
+            </header>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h4>Total Active Chargers</h4>
+                    <h2 id="metric-active">0</h2>
+                </div>
+                <div class="metric-card">
+                    <h4>Planned Expansion</h4>
+                    <h2 id="metric-planned">0</h2>
+                </div>
+                <div class="metric-card">
+                    <h4>Identified Gaps (AI)</h4>
+                    <h2 id="metric-gaps">0</h2>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card wide">
+                    <h3>State Density Overview</h3>
+                    <div class="chart-container">
+                        <canvas id="densityChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Operator Market Share</h3>
+                    <div class="chart-container">
+                        <canvas id="operatorChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Expansion Predictions Logic</h3>
+                    <div class="predictions-list" id="predictions-list">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- The locally cached data script -->
+    <script src="app.js"></script>
+</body>
+</html>
